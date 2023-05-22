@@ -26,62 +26,87 @@
                                 <table width="100%">
                                     <tbody>
                                         <tr>
-                                            <td style="font-weight: bold;" width="35%">Nama Lengkap</td>
+                                            <td style="font-weight: bold;" width="35%">NIK</td>
                                             <td width="1%">:</td>
                                             <td>
-                                                {{$queue->patient->name}}
+                                                {{$queue->patient->nik}}
                                             </td>
                                         </tr>
 
                                         <tr>
+                                        <td style="font-weight: bold;" width="35%">Nama Lengkap</td>
+                                        <td width="1%">:</td>
+                                        <td>
+                                            {{$queue->patient->name}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;" width="35%">Sex / Umur</td>
+                                        <td>:</td>
+                                        <td>{{$queue->patient->gender}} / {{\Carbon\Carbon::parse($queue->patient->birth_date)
+                                            ->diffInYears
+                                            ()}}
+                                            Thn</td>
+                                        </tr>
+                                    <tr>
+                                        <td style="font-weight: bold;" width="35%">Alamat</td>
+                                        <td width="1%">:</td>
+                                        <td>
+                                            {{$queue->patient->address}}
+                                        </td>
+                                    </tr>
+
+
+
+                                    {{-- <tr>
+                                        <td style="font-weight: bold;" width="35%">Tanggal Lahir</td>
+                                        <td>:</td>
+                                        <td>{{\Carbon\Carbon::parse($queue->patient->birth_date)->isoFormat('D MMMM Y')}}</td>
+                                    </tr> --}}
+
+
+                                    </tbody></table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-weight: bold;" width="35%">Tanggal Masuk/Jam</td>
+                                                <td width="1%">:</td>
+                                                <td>{{\Carbon\Carbon::parse($queue->created_at)->format('H:i, d F Y')}}</td>
+                                                {{-- <td>{{\Carbon\Carbon::parse($queue->created_at)->isoFormat('hh:mm, D MMMM Y')}}</td> --}}
+                                            </tr>
+                                            <tr>
+                                                <td style="font-weight: bold;" width="35%">No. Rekam Medis</td>
+                                                <td width="1%">:</td>
+                                                <td>
+                                                    001
+                                                </td>
+                                            </tr>
+
+
+                                        {{-- <tr>
                                             <td style="font-weight: bold;" width="35%">No Antrian</td>
                                             <td>:</td>
                                             <td>{{$queue->queue_number}}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td style="font-weight: bold;" width="35%">TTL</td>
-                                            <td>:</td>
-                                            <td>{{$queue->patient->birth_date}}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td style="font-weight: bold;" width="35%">Sex / Umur</td>
-                                            <td>:</td>
-                                            <td>
-                                                {{$queue->patient->gender}} / {{\Carbon\Carbon::parse($queue->patient->birth_date)->diffInYears()}} Thn
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-6">
-                                <table width="100%">
-                                    <tbody>
-                                        <tr>
-                                            <td style="font-weight: bold;" width="35%">Waktu Kunjungan</td>
-                                            <td width="1%">:</td>
-                                            <td>{{\Carbon\Carbon::parse($queue->created_at)->format('H:i, d F Y')}}</td>
-                                            {{-- <td>{{$queue->created_at}}</td> --}}
-                                        </tr>
-
-
-                                        <tr>
+                                        </tr> --}}
+                                        {{-- <tr>
                                             <td style="font-weight: bold;" width="35%">Jenis Pasien</td>
                                             <td>:</td>
                                             <td>Umum </td>
-                                        </tr>
+                                        </tr> --}}
 
-                                        <tr>
-                                            <td style="font-weight: bold;" width="35%">Layanan </td>
-                                            <td>:</td>
-                                            <td>{{$queue->service->name}}</td>
-                                        </tr>
+
 
                                         <tr>
                                             <td style="font-weight: bold;" width="35%">Dokter Pemeriksa</td>
                                             <td>:</td>
                                             <td>{{$queue->doctor->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;" width="35%">Layanan </td>
+                                            <td>:</td>
+                                            <td>{{$queue->service->name}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
